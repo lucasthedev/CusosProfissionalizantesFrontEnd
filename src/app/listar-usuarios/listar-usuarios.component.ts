@@ -19,10 +19,21 @@ export class ListarUsuariosComponent implements OnInit {
       .subscribe(dados =>{
         this.usuarios = dados;
         this.setDescricao();
+        this.formatarData();
       } 
     );
+  }
 
-      
+  formatarData(){
+    this.contador = 0;
+    for(let data of this.usuarios){
+      let data = new Date(this.usuarios[this.contador].dataNascimento);
+      let dia = data.getDate().toString().padStart(2, '0');
+      let mes = (data.getMonth()+1).toString().padStart(2, '0');
+      let ano = data.getFullYear().toString();
+      this.usuarios[this.contador].dataNascimento = dia + "/" + mes + "/" + ano;
+      this.contador++;
+    }
   }
 
   setDescricao(){

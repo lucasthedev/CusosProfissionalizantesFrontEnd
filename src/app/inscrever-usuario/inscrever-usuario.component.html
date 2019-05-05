@@ -16,7 +16,7 @@
   <div class="form-group">
     <label for="dtNascimento">Data Nascimento</label>
     <input type="text" class="form-control" id="dtNascimento" placeholder="10/10/1990" [(ngModel)]="usuario.dataNascimento" name="dataNascimento"
-      required #dataNascimento="ngModel">
+      required #dataNascimento="ngModel" bsDatepicker>
     <div *ngIf="!dataNascimento.valid && dataNascimento.touched" class="alert alert-danger" role="alert">
       O campo "Data Nascimento" é obrigatório.
     </div>
