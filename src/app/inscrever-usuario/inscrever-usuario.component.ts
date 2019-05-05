@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CursosUsuariosService } from '../cursos-usuarios.service';
 import { ActivatedRoute } from '@angular/router';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { AlertModalComponent } from '../utilitarios/alert-modal/alert-modal.component';
 
 @Component({
   selector: 'app-inscrever-usuario',
@@ -18,7 +20,9 @@ export class InscreverUsuarioComponent implements OnInit {
     telefone: ''
   }
 
-  constructor(private service: CursosUsuariosService, private route: ActivatedRoute) { }
+  bsModalRef: BsModalRef;
+
+  constructor(private service: CursosUsuariosService, private route: ActivatedRoute, private modalService: BsModalService) { }
 
   ngOnInit() {
     this.route.params.subscribe(
@@ -33,12 +37,24 @@ export class InscreverUsuarioComponent implements OnInit {
   salvarUsuario(){
     this.service.inserirUsuario(this.usuario).subscribe(
       success => {
-        alert("Usuário " + this.usuario.nome + " inscrito com sucesso.");
+        this.msgSucesso(this.usuario.nome);
         var formulario = document.getElementsByTagName("form");
         formulario[0].reset();
       },
-      error => alert("Erro ao realizar a inscrição")
+      error => this.msgErro()
     );
+  }
+
+  msgSucesso(nome){
+    this.bsModalRef = this.modalService.show(AlertModalComponent);
+    this.bsModalRef.content.tipo = 'success';
+    this.bsModalRef.content.mensagem = 'Usuário ' + nome + ' inserido com sucesso.';
+  }
+
+  msgErro(){
+    this.bsModalRef = this.modalService.show(AlertModalComponent);
+    this.bsModalRef.content.tipo = 'danger';
+    this.bsModalRef.content.mensagem = 'Ocorreu erro ao inserir o usuário';
   }
 
 }

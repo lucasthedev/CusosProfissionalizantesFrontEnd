@@ -9,6 +9,8 @@ import { AppComponent } from './app.component';
 import { ListarCursosComponent } from './listar-cursos/listar-cursos.component';
 import { InscreverUsuarioComponent } from './inscrever-usuario/inscrever-usuario.component';
 import { ListarUsuariosComponent } from './listar-usuarios/listar-usuarios.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { UtilitariosModule } from './utilitarios/utilitarios.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { ListarUsuariosComponent } from './listar-usuarios/listar-usuarios.compo
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    BsDatepickerModule.forRoot()
+    BsDatepickerModule.forRoot(),
+    ModalModule.forRoot(),
+    UtilitariosModule
   ],
   providers: [],
   bootstrap: [AppComponent]
