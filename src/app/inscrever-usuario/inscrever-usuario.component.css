@@ -1,0 +1,11 @@
+.ng-invalid.ng-touched:not(form){
+    border: solid 1px red;
+}
+
+form{
+    margin-top: 15px;
+}
+
+button{
+    float: right;
+}

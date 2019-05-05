@@ -26,4 +26,10 @@ export class CursosUsuariosService {
     return this.http.get<Cursos[]>(this.urlListarCursos, httpOptions);
   }
 
+  urlInserir: string = "http://localhost:8080/Profissional/rest/CursosController/inscreverUsuario";
+
+  inserirUsuario(usuario: any){
+    return this.http.post(this.urlInserir,usuario, httpOptions);
+  }
+
 }

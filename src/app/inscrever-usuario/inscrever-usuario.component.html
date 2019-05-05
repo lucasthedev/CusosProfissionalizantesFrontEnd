@@ -1,3 +1,29 @@
-<p>
-  inscrever-usuario works!
-</p>
+<form #formInserir="ngForm" class="container">
+  <div class="form-group">
+    <label for="nomeUsuario">Nome</label>
+    <input type="text" class="form-control" id="nomeUsuario" placeholder="Seu nome..." [(ngModel)]="usuario.nome" name="nome" required #nome="ngModel" >
+    <div *ngIf="!nome.valid && nome.touched" class="alert alert-danger " role="alert">
+        O campo "Nome" é obrigatório.
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="emailUsuario">Email</label>
+    <input type="text" class="form-control" id="emailUsuario" placeholder="nome@email.com.br" [(ngModel)]="usuario.email" name="email" required #email="ngModel">
+    <div *ngIf="!email.valid && email.touched && email.value == ''" class="alert alert-danger" role="alert">
+        O campo "Email" é obrigatório.
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="dtNascimento">Data Nascimento</label>
+    <input type="text" class="form-control" id="dtNascimento" placeholder="10/10/1990" [(ngModel)]="usuario.dataNascimento" name="dataNascimento"
+      required #dataNascimento="ngModel">
+    <div *ngIf="!dataNascimento.valid && dataNascimento.touched" class="alert alert-danger" role="alert">
+      O campo "Data Nascimento" é obrigatório.
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="telefoneUsuario">Telefone</label>
+    <input type="text" class="form-control" id="telefoneUsuario" placeholder="999-9999" [(ngModel)]="usuario.telefone" name="telefone" #telefone="ngModel" >
+  </div>
+  <button type="submit" class="btn btn-primary btn-lg" (click)="salvarUsuario()" [disabled]="!formInserir.valid">Salvar</button>
+</form>

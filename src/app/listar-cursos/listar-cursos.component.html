@@ -24,8 +24,8 @@
             <td>{{curso.cargaHoraria}}</td>
             <td>{{curso.dataInicio}}</td>
             <td>{{curso.diasSemana}}</td>
-            <td><a href="www.google.com.br">Vídeo</a></td>
-            <td><button type="button" class="btn btn-secondary">Inscreva-se</button></td>
+            <td><a href={{curso.urlVideo}} target="_blank" class="badge badge-info">Vídeo</a></td>
+            <td><button type="button" class="btn btn-secondary" (click)="inscreverUsuario(curso.id)">Inscreva-se</button></td>
           </tr>
         </tbody>
       </table>
