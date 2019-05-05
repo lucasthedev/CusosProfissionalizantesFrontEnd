@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { Cursos } from './cursos';
+import { Usuarios } from './usuarios';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -30,6 +31,12 @@ export class CursosUsuariosService {
 
   inserirUsuario(usuario: any){
     return this.http.post(this.urlInserir,usuario, httpOptions);
+  }
+
+  urlListarUsuarios: string = "http://localhost:8080/Profissional/rest/CursosController/listarUsuarios";
+
+  listarUsuarios(){
+    return this.http.get<Usuarios[]>(this.urlListarUsuarios, httpOptions);
   }
 
 }

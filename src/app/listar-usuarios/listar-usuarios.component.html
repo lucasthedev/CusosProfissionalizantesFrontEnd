@@ -1,0 +1,31 @@
+<div class="container" id="listagem-usuarios">
+  <div class="card-container">
+    <div class="card-header">
+      <div class="row">
+          <h4 class="col-10 text-center">Usuários</h4>
+      </div>
+    </div>
+    <div class="card-body">
+        <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Data Nascimento</th>
+                <th>Telefone</th>
+                <th>Curso</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let usuario of usuarios">
+                <td>{{usuario.nome}}</td>
+                <td>{{usuario.email}}</td>
+                <td>{{usuario.dataNascimento}}</td>
+                <td>{{usuario.telefone}}</td>
+                <td>{{usuario.descricaoCurso}}</td>
+              </tr>
+            </tbody>
+        </table>
+    </div>
+  </div>
+</div>
